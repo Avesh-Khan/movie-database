@@ -10,6 +10,7 @@ const Movies = () => {
         const getMovies = async () => {
             try {
                 const data = await fetchMovies();
+                console.log(data);
                 setMovies(data);
             } catch (err) {
                 setError(err.message);
@@ -26,11 +27,12 @@ const Movies = () => {
     return (
         <div>
             <h1>Movie Database</h1>
-            <ul>
+            <ul className='data'>
                 {movies.map(movie => (
                     <li key={movie.id}>
-                        <h2>{movie.title}</h2>
-                        <p>{movie.description}</p>
+                        <h2>{movie.movie}</h2>
+                        <p>{movie.rating}</p>
+                        <a href={movie.imdb_url}>movie imdb rating</a>
                     </li>
                 ))}
             </ul>
